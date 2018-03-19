@@ -1,0 +1,33 @@
+{{#if flash}}
+  <div id='flashMessage' class="alert alert-dismissible alert-{{flash.type}}">
+    <button id='close' type="button" class="close"
+      data-dismiss="alert" aria-hidden="true">&times;</button>
+    <strong>{{flash.intro}}</strong> {{{flash.message}}}
+  </div>
+
+{{/if}}
+
+<h1 id='b'>signup</h1>
+<form action="/signup" method="post">
+  First name:<br>
+  <input type="text" name="username" value="Mickey">
+  <br>
+  password:<br>
+  <input type="text" name="password" value="Mouse">
+  <br><br>
+  <input type="submit" value="Submit">
+</form>
+
+
+
+
+{{#section 'jquery'}}
+	<script>
+		$('document').ready(function(){
+			$("#close").click(function () {
+        $("#flashMessage").hide();
+
+      });
+		});
+	</script>
+{{/section}}
