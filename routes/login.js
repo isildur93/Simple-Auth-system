@@ -1,10 +1,12 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../models/userModel');
+var Values = require('../models/values');
 /* GET home page. */
 router.get('/', function(req, res) {
 
   res.render('login');
+
 });
 router.post('/', function(req, res, next) {
   User.findOne({
@@ -39,6 +41,25 @@ router.post('/', function(req, res, next) {
     }
 
 
+  });
+
+
+});
+router.use('/', function(req, res) {
+  var viewModel = {
+    values: []
+
+  };
+  Values.find({}, {}, function(err, values) {
+    if (err) {
+      throw err;
+    }
+
+    viewModel.values = values;
+    viewModel.user = req.body.username;
+
+
+    res.render('welcome', viewModel);
   });
 
 
