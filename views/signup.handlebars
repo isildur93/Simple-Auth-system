@@ -7,12 +7,12 @@
 
 {{/if}}
 
-<h1 id='b'>signup</h1>
+<h1 id='b'>Signup</h1>
 <form action="/signup" method="post">
   First name:<br>
   <input type="text" name="username" value="Mickey">
   <br>
-  password:<br>
+  Password:<br>
   <input type="text" name="password" value="Mouse">
   <br><br>
   <input type="submit" value="Submit">
@@ -30,4 +30,13 @@
       });
 		});
 	</script>
+{{/section}}
+
+
+{{#section 'head'}}
+  <style>
+    html {
+      text-align: center;
+    }
+  </style>
 {{/section}}

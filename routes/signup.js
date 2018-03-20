@@ -15,7 +15,12 @@ router.post('/', function(req, res) {
     username: testUser.username
   }, function(err, user) {
     if (user) {
-      res.send('nickname not available');
+      req.session.flash = {
+        type: 'danger',
+        intro: 'Validation error!',
+        message: 'This username is already taken.',
+      };
+      res.redirect(303, '/signup');
     } else {
       testUser.save();
       res.send('user created');
