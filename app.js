@@ -63,25 +63,7 @@ app.use('/users', users);
 app.use('/login', login);
 app.use('/signup', signup);
 app.use('/logout', logout);
-app.use(function(req, res) {
-var viewModel = {
-  values: []
 
-};
-Values.find({}, {}, function(err, values) {
-  if (err) {
-    throw err;
-  }
-
-  viewModel.values = values;
-  viewModel.user = req.body.username;
-
-
-  res.render('welcome', viewModel);
-});
-
-
-});
 
 
 
