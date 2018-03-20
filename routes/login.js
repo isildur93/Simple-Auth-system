@@ -6,7 +6,7 @@ router.get('/', function(req, res) {
 
   res.render('login');
 });
-router.post('/', function(req, res) {
+router.post('/', function(req, res, next) {
   User.findOne({
     username: req.body.username
   }, function(err, user) {
@@ -16,13 +16,26 @@ router.post('/', function(req, res) {
       user.comparePassword(req.body.password, function(err, isMatch) {
         if (err) throw err;
         if (isMatch) {
-          res.send('Complimenti ti sei loggato');
+          req.session.userId = user._id;
+          next();
         } else {
-          res.send('La pasword inserita non è corretta');
+          req.session.flash = {
+            type: 'danger',
+            intro: 'Validation error!',
+            message: 'Wrong password!',
+          };
+          res.redirect(303, '/login');
+
+
         }
       });
     } else {
-      res.send('utente non presente nel database')
+      req.session.flash = {
+        type: 'danger',
+        intro: 'Validation error!',
+        message: 'Unable to find this username!',
+      };
+      res.redirect(303, '/login');
     }
 
 
@@ -30,5 +43,6 @@ router.post('/', function(req, res) {
 
 
 });
+
 
 module.exports = router;
