@@ -45,19 +45,14 @@
 </style>
 
 <body class="w3-light-grey w3-content" style="max-width:1600px">
-
-
-
-
-
-
-  <!-- Sidebar/menu -->
+  <!-- particles.js container -->
+<div id="particles-js">  <!-- Sidebar/menu -->
   <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
     <div class="w3-container">
       <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu">
       <i class="fa fa-remove"></i>
     </a>
-<img src="http://localhost:3300/static/images/logo2.png" width="50%">
+      <img src="http://localhost:3300/static/images/logo2.png" width="50%">
       <h4><b>Simple is better than complex</b></h4>
       <p class="w3-text-grey">Keep it simple, stupid</p>
     </div>
@@ -81,9 +76,21 @@
   <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
   <!-- !PAGE CONTENT! -->
-  <div class="w3-main" style="margin-left:300px">
+  <div class="w3-main" style="margin-left:400px">    {{{body}}}</div>
 
-{{{body}}}
+<!-- scripts -->
+<script src="../static/js/particles.js"></script>
+<script src="../static/js/app.js"></script>
+
+
+
+
+
+
+
+
+
+
     <!-- Header -->
     <header id="portfolio">
 
@@ -97,18 +104,18 @@
 
 
 
-  <script>
-    // Script to open and close sidebar
-    function w3_open() {
-      document.getElementById("mySidebar").style.display = "block";
-      document.getElementById("myOverlay").style.display = "block";
-    }
+    <script>
+      // Script to open and close sidebar
+      function w3_open() {
+        document.getElementById("mySidebar").style.display = "block";
+        document.getElementById("myOverlay").style.display = "block";
+      }
 
-    function w3_close() {
-      document.getElementById("mySidebar").style.display = "none";
-      document.getElementById("myOverlay").style.display = "none";
-    }
-  </script>
+      function w3_close() {
+        document.getElementById("mySidebar").style.display = "none";
+        document.getElementById("myOverlay").style.display = "none";
+      }
+    </script>
 
 </body>
 <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -117,7 +124,10 @@
 </script>
 {{{_sections.jquery}}}
 
-
+<script>/* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
+particlesJS.load('particles-js', 'static/js/particles.json', function() {
+  console.log('callback - particles.js config loaded');
+});</script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
